@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+# WebRTC Calling App - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern React.js application for P2P video calling with WebRTC technology.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Simple Login**: Use `alice@yopmail.com` or `bob@yopmail.com` to login
+- **P2P Video Calling**: Direct peer-to-peer video and audio communication
+- **Call States**: Idle, calling, ringing, connected, ended
+- **Auto Timeout**: Calls automatically end after 10 seconds if not answered
+- **Video/Audio Controls**: Toggle video and audio with visual feedback
+- **Profile Pictures**: Shows profile icons when video is turned off
+- **Mute Indicators**: Visual indicators for muted audio
+- **Responsive Design**: Works on desktop and mobile devices
 
-### `npm start`
+## Setup Instructions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
+- Node.js (v14 or higher)
+- Backend server running on port 3001
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Installation
 
-### `npm test`
+1. Install dependencies:
+```bash
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Start the development server:
+```bash
+npm start
+```
 
-### `npm run build`
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Testing with Two Users
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Start Backend Server** (in backend directory):
+```bash
+cd ../backend
+npm start
+```
 
-### `npm run eject`
+2. **Start Frontend** (in frontend directory):
+```bash
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Open Two Browser Windows**:
+   - **Alice**: Open Chrome and go to `http://localhost:3000`
+   - **Bob**: Open Chrome Incognito and go to `http://localhost:3000`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Login**:
+   - Alice: Enter `alice@yopmail.com`
+   - Bob: Enter `bob@yopmail.com`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. **Make a Call**:
+   - Alice clicks "Start Call" button
+   - Bob receives incoming call notification
+   - Bob clicks "Accept" to join the call
+   - Both users can now see and hear each other
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Call Controls
 
-## Learn More
+- **Video Toggle**: Turn video on/off (shows profile picture when off)
+- **Audio Toggle**: Mute/unmute audio (shows mute indicator)
+- **End Call**: Terminate the call for both users
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Call States
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Idle**: Ready to make or receive calls
+- **Calling**: Initiating a call (10-second timeout)
+- **Ringing**: Receiving an incoming call (10-second timeout)
+- **Connected**: Active video/audio call
+- **Ended**: Call has been terminated
 
-### Code Splitting
+## Technical Details
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Frontend**: React.js with hooks
+- **Styling**: Custom CSS with modern design
+- **WebRTC**: Peer-to-peer video/audio streaming
+- **Signaling**: WebSocket communication with backend
+- **ICE Servers**: Google STUN servers for NAT traversal
 
-### Analyzing the Bundle Size
+## File Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+src/
+├── App.js          # Main application component
+├── App.css         # Application styles
+├── index.js        # Application entry point
+└── index.css       # Global styles
+```
 
-### Making a Progressive Web App
+## Browser Compatibility
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
 
-### Advanced Configuration
+## Troubleshooting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. **Camera/Microphone Access**: Ensure browser permissions are granted
+2. **WebSocket Connection**: Verify backend server is running on port 3001
+3. **Video Not Showing**: Check camera permissions and browser console for errors
+4. **Call Not Connecting**: Ensure both users are logged in and backend is accessible
 
-### Deployment
+## Development
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+To modify the application:
 
-### `npm run build` fails to minify
+1. Edit `src/App.js` for functionality changes
+2. Edit `src/App.css` for styling changes
+3. The app will automatically reload when you save changes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Production Build
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+This creates an optimized build in the `build` folder.
