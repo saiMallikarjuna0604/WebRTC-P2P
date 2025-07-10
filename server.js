@@ -143,6 +143,7 @@ wss.on('connection', (ws) => {
           // Notify both peers that call has ended
           const endCallerClient = clients.get(data.from);
           const endReceiverClient = clients.get(data.to);
+          console.log('endCallerClient', endCallerClient);
           
           if (endCallerClient) {
             endCallerClient.peer = null;
